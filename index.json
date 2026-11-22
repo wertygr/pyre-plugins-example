@@ -1,24 +1,4 @@
 {
     "schema": 1,
-    "plugins": [
-        {
-            "name": "_panel_",
-            "title": "Panel",
-            "description": "Tkinter panel in a separate thread: displays REPL status; requires an async branch",
-            "tags": [
-                "async",
-                "gui",
-                "threading"
-            ],
-            "since": null,
-            "repo": null,
-            "url": null,
-            "version_url": null,
-            "config": {
-                "file": "panel/__init__.py",
-                "cache": true,
-                "api": true
-            }
-        }
-    ]
+    "plugins": []
 }

@@ -25,9 +25,7 @@ never has to change.
 
 <!-- BEGIN INDEX -->
 
-| plugin | what it shows | tags | install |
-|:--|:--|:--|:--|
-| `_panel_` | Tkinter panel in a separate thread: displays REPL status; requires an async branch | async, gui, threading | not published |
+_No plugins yet._
 
 <!-- END INDEX -->
 
