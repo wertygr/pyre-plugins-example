@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/wertygr/pyre-plugins/schema/plugin.schema.json",
+    "title": "PYRE plugin metadata",
+    "description": "Metadata file (plugin.json) of a single plugin repository. The index build validates the same rules without external dependencies.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name", "title", "config"],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Command name, it must be wrapped in underscores.",
+            "pattern": "^_[a-z0-9](?:[a-z0-9_]*[a-z0-9])?_$",
+            "examples": ["_hello_"]
+        },
+        "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human readable name shown in the index table."
+        },
+        "description": {
+            "type": "string",
+            "description": "One line: what the example demonstrates."
+        },
+        "tags": {
+            "type": "array",
+            "items": {"type": "string"},
+            "uniqueItems": true,
+            "default": []
+        },
+        "since": {
+            "type": "string",
+            "description": "First version of the plugin that provides the example.",
+            "examples": ["0.1.0"]
+        },
+        "config": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Copied as-is into the plugin section of the PYRE settings.",
+            "required": ["file"],
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "pattern": "^(?!.*\\.\\.)(?!.*\\\\)(?!.*:)[\\w.-]+(?:/[\\w.-]+)*\\.py$",
+                    "description": "Plugin entry file, a path inside the package: \"hello.py\", or \"panel/__init__.py\" for a package directory.",
+                    "examples": ["hello.py", "panel/__init__.py"]
+                },
+                "cache": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Reuse the module from sys.modules instead of re-importing it."
+                },
+                "api": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Pass the full plugin API to main/hook_run instead of an empty dict."
+                },
+                "hooks": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "uniqueItems": true,
+                    "default": [],
+                    "description": "Hook names handled by hook_run; __any__ subscribes to every hook."
+                }
+            }
+        }
+    }
+}

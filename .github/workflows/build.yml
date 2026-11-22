@@ -1,0 +1,49 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # daily: picks up metadata changes in plugin repositories
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # TODO: drop --allow-missing once every entry in sources.json is published
+      - name: verify committed index
+        if: github.event_name == 'pull_request'
+        run: python tools/build.py --check --allow-missing
+
+      - name: rebuild index
+        if: github.event_name != 'pull_request'
+        run: python tools/build.py --allow-missing
+
+      - name: commit changes
+        if: github.event_name != 'pull_request'
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "index is up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json README.md
+          git commit -m "index: rebuild"
+          git push
