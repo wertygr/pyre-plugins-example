@@ -4,12 +4,6 @@
     "plugin_json": "plugin.json",
     "asset_suffix": ".zip",
     "plugins": [
-        {"local": "../pyre-plugin-example-panel"},
-        {"repo": "pyre-plugin-hello", "asset": "hello.zip"},
-        {"repo": "pyre-plugin-hook-logger", "asset": "hook_logger.zip"},
-        {"repo": "pyre-plugin-buffer-edit", "asset": "buffer_edit.zip"},
-        {"repo": "pyre-plugin-plugin-space", "asset": "plugin_space.zip"},
-        {"repo": "pyre-plugin-async-tick", "asset": "async_tick.zip"},
-        {"repo": "pyre-plugin-settings-aware", "asset": "settings_aware.zip"}
+        {"local": "../pyre-plugin-example-panel"}
     ]
 }
