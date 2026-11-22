@@ -26,14 +26,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      # TODO: drop --allow-missing once every entry in sources.json is published
       - name: verify committed index
         if: github.event_name == 'pull_request'
-        run: python tools/build.py --check --allow-missing
+        run: python tools/build.py --check
 
       - name: rebuild index
         if: github.event_name != 'pull_request'
-        run: python tools/build.py --allow-missing
+        run: python tools/build.py
 
       - name: commit changes
         if: github.event_name != 'pull_request'

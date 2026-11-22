@@ -11,11 +11,26 @@
                 "threading"
             ],
             "since": null,
-            "repo": null,
-            "url": null,
-            "version_url": null,
+            "repo": "pyre-plugin-example-panel",
+            "url": "https://github.com/wertygr/pyre-plugin-example-panel/releases/latest/download/panel.zip",
+            "version_url": "https://github.com/wertygr/pyre-plugin-example-panel/releases/download/{tag}/panel.zip",
             "config": {
                 "file": "panel/__init__.py",
+                "cache": true,
+                "api": true
+            }
+        },
+        {
+            "name": "_ppm_",
+            "title": "PPM",
+            "description": "minimal package manager",
+            "tags": [],
+            "since": null,
+            "repo": "pyre-plugin-example-ppm",
+            "url": "https://github.com/wertygr/pyre-plugin-example-ppm/releases/latest/download/ppm.zip",
+            "version_url": "https://github.com/wertygr/pyre-plugin-example-ppm/releases/download/{tag}/ppm.zip",
+            "config": {
+                "file": "ppm/__init__.py",
                 "cache": true,
                 "api": true
             }

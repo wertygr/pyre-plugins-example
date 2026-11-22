@@ -27,7 +27,8 @@ never has to change.
 
 | plugin | what it shows | tags | install |
 |:--|:--|:--|:--|
-| `_panel_` | Tkinter panel in a separate thread: displays REPL status; requires an async branch | async, gui, threading | not published |
+| [`_panel_`](https://github.com/wertygr/pyre-plugin-example-panel) | Tkinter panel in a separate thread: displays REPL status; requires an async branch | async, gui, threading | `_ppm_ install https://github.com/wertygr/pyre-plugin-example-panel/releases/latest/download/panel.zip` |
+| [`_ppm_`](https://github.com/wertygr/pyre-plugin-example-ppm) | minimal package manager | - | `_ppm_ install https://github.com/wertygr/pyre-plugin-example-ppm/releases/latest/download/ppm.zip` |
 
 <!-- END INDEX -->
 

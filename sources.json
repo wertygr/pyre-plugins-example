@@ -4,6 +4,7 @@
     "plugin_json": "plugin.json",
     "asset_suffix": ".zip",
     "plugins": [
-        {"local": "../pyre-plugin-example-panel"}
+        {"repo": "pyre-plugin-example-panel", "asset": "panel.zip"},
+        {"repo": "pyre-plugin-example-ppm", "asset": "ppm.zip"}
     ]
 }
