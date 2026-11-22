@@ -48,7 +48,7 @@ class BuildError(Exception):
 
 
 class Missing(BuildError):
-    """A plugin is not published yet (repo, metadata or release is absent)."""
+    """A plugin is absent: repo, metadata file or release asset is not there yet."""
 
 
 # --------------------------------------------------------------------------- io
@@ -59,6 +59,8 @@ def fetch(url: str) -> bytes:
         with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
             return response.read()
     except urllib.error.HTTPError as e:
+        if e.code == 404:
+            raise Missing(f"HTTP 404 for {url}") from None
         hint = f" ({e.reason})" if e.reason else ""
         raise BuildError(f"HTTP {e.code} for {url}{hint}") from None
     except (urllib.error.URLError, OSError) as e:
@@ -98,7 +100,7 @@ def read_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
     except FileNotFoundError:
-        raise BuildError(f"missing file: {name}") from None
+        raise Missing(f"missing file: {name}") from None
     except json.JSONDecodeError as e:
         raise BuildError(f"{name}: invalid JSON ({e})") from None
 
@@ -212,11 +214,7 @@ def read_meta(entry: dict, sources: dict) -> tuple[dict, str]:
     local = entry["local"]
     if local is not None:
         directory = (ROOT / local).resolve()
-        path = directory / sources["plugin_json"]
-        try:
-            meta = read_json(path)
-        except BuildError as e:
-            raise Missing(str(e)) from None
+        meta = read_json(directory / sources["plugin_json"])
         return meta, f"local:{local}"
 
     repo = entry["repo"]
@@ -226,10 +224,7 @@ def read_meta(entry: dict, sources: dict) -> tuple[dict, str]:
         branch=sources["branch"],
         path=sources["plugin_json"],
     )
-    try:
-        raw = fetch(url)
-    except BuildError as e:
-        raise Missing(str(e)) from None
+    raw = fetch(url)
 
     try:
         meta = json.loads(raw)
