@@ -10,8 +10,13 @@
         "name": {
             "type": "string",
             "description": "Command name, it must be wrapped in underscores.",
-            "pattern": "^_[a-z0-9](?:[a-z0-9_]*[a-z0-9])?_$",
-            "examples": ["_hello_"]
+            "examples": ["_example_"]
+        },
+        "blacklist": {
+            "type": "array",
+            "items": {"type": "string"},
+            "uniqueItems": true,
+            "default": []
         },
         "title": {
             "type": "string",

@@ -16,8 +16,8 @@ Install any example with `ppm`, the PYRE package manager (or copy its files into
 `plugins/` and add the `plugin` entry to your settings by hand):
 
 ```pycon
->>> _ppm_ install https://github.com/wertygr/pyre-plugin-hello/releases/latest/download/hello.zip
->>> _hello_ world
+_ppm_ install https://github.com/wertygr/pyre-plugin-hello/releases/latest/download/hello.zip
+_hello_ world
 ```
 
 The install link always points at the **latest** release of that plugin, so it
@@ -62,6 +62,7 @@ pyre-plugin-hello/
     "title": "Hello world",
     "description": "Minimal plugin: one command, output through api['pft']",
     "tags": ["basic", "sync"],
+    "blacklist": [],
     "since": "0.1.0",
     "config": {
         "file": "hello.py",
@@ -76,7 +77,6 @@ Rules enforced by the index build:
 
 | field | rule |
 |:--|:--|
-| `name` | `_lowercase_` — it is the command that invokes the plugin |
 | `config` | only `file`, `cache`, `api`, `hooks` (these keys are copied as-is into the settings) |
 | `config.file` | path inside the package: `hello.py`, or `panel/__init__.py` for a package directory |
 | `title` | non-empty, used in the table |

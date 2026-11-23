@@ -5,6 +5,7 @@
     "asset_suffix": ".zip",
     "plugins": [
         {"repo": "pyre-plugin-example-panel", "asset": "panel.zip"},
-        {"repo": "pyre-plugin-example-ppm", "asset": "ppm.zip"}
+        {"repo": "pyre-plugin-example-ppm", "asset": "ppm.zip"},
+        {"repo": "pyre-plugin-example-builder", "asset": "builder.zip"}
     ]
 }
