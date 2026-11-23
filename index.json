@@ -34,6 +34,21 @@
                 "cache": true,
                 "api": true
             }
+        },
+        {
+            "name": "build",
+            "title": "builder",
+            "description": "ppm package builder",
+            "tags": [],
+            "since": null,
+            "repo": "pyre-plugin-example-builder",
+            "url": "https://github.com/wertygr/pyre-plugin-example-builder/releases/latest/download/builder.zip",
+            "version_url": "https://github.com/wertygr/pyre-plugin-example-builder/releases/download/{tag}/builder.zip",
+            "config": {
+                "file": "builder/__init__.py",
+                "cache": true,
+                "api": true
+            }
         }
     ]
 }

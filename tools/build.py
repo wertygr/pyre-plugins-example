@@ -32,7 +32,7 @@ README_FILE = ROOT / "README.md"
 BEGIN = "<!-- BEGIN INDEX -->"
 END = "<!-- END INDEX -->"
 
-NAME_RE = re.compile(r"^_[a-z0-9](?:[a-z0-9_]*[a-z0-9])?_$")
+NAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 CONFIG_KEYS = frozenset({"file", "cache", "api", "hooks"})
 USER_AGENT = "pyre-plugins-index/1.0"
 TIMEOUT = 20.0
@@ -169,7 +169,10 @@ def validate(meta: Any, where: str) -> list[str]:
     errors: list[str] = []
     name = meta.get("name")
     if not isinstance(name, str) or not NAME_RE.match(name):
-        errors.append(f'{where}: "name" must look like "_hello_" (it is the command name)')
+        errors.append(
+            f'{where}: "name" must be a command identifier '
+            f'(e.g. "build" or "_hello_"); the "_name_" form is the recommended style'
+        )
 
     title = meta.get("title")
     if not isinstance(title, str) or not title.strip():
@@ -182,6 +185,10 @@ def validate(meta: Any, where: str) -> list[str]:
     tags = meta.get("tags", [])
     if not isinstance(tags, list) or any(not isinstance(tag, str) for tag in tags):
         errors.append(f'{where}: "tags" must be a list of strings')
+
+    blacklist = meta.get("blacklist", [])
+    if not isinstance(blacklist, list) or any(not isinstance(item, str) for item in blacklist):
+        errors.append(f'{where}: "blacklist" must be a list of strings')
 
     config = meta.get("config")
     if not isinstance(config, dict):

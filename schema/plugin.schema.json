@@ -9,8 +9,9 @@
     "properties": {
         "name": {
             "type": "string",
-            "description": "Command name, it must be wrapped in underscores.",
-            "examples": ["_example_"]
+            "description": "Command name used to invoke the plugin. The \"_name_\" form is the recommended style, but any identifier is valid.",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+            "examples": ["_example_", "build"]
         },
         "blacklist": {
             "type": "array",

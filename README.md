@@ -29,6 +29,7 @@ never has to change.
 |:--|:--|:--|:--|
 | [`_panel_`](https://github.com/wertygr/pyre-plugin-example-panel) | Tkinter panel in a separate thread: displays REPL status; requires an async branch | async, gui, threading | `_ppm_ install https://github.com/wertygr/pyre-plugin-example-panel/releases/latest/download/panel.zip` |
 | [`_ppm_`](https://github.com/wertygr/pyre-plugin-example-ppm) | minimal package manager | - | `_ppm_ install https://github.com/wertygr/pyre-plugin-example-ppm/releases/latest/download/ppm.zip` |
+| [`build`](https://github.com/wertygr/pyre-plugin-example-builder) | ppm package builder | - | `_ppm_ install https://github.com/wertygr/pyre-plugin-example-builder/releases/latest/download/builder.zip` |
 
 <!-- END INDEX -->
 
@@ -82,6 +83,7 @@ Rules enforced by the index build:
 | `title` | non-empty, used in the table |
 | `description` | one line, used in the table and in `index.json` |
 | `tags` | list of strings |
+| `blacklist` | optional list of glob patterns the packager skips (`__pycache__`, `*.pyc`, ...) |
 | `since` | optional, first version that provides the example |
 
 ## Multi-file plugins (packages)
