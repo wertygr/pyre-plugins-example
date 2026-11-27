@@ -288,6 +288,7 @@ def resolve(entry: dict, sources: dict, check_assets: bool) -> dict:
         "since": meta.get("since"),
         "repo": repo,
         "url": url,
+        "src": meta["src"],
         "version_url": version_url,
         "config": meta["config"],
     }

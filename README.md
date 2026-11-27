@@ -6,7 +6,7 @@ Every plugin lives in its own repository, so it can be versioned, released and
 committed independently. This repository contains no plugin code: it only
 collects metadata from each plugin repo and produces a single index.
 
-- [`index.json`](index.json) — machine-readable list (for tools, e.g. a future `_ppm_ search`)
+- [`index.json`](index.json) — machine-readable list 
 - [`sources.json`](sources.json) — the human-maintained list of plugin repositories
 - [`README.md`](README.md) — the table below, generated from `sources.json`
 
@@ -63,8 +63,9 @@ pyre-plugin-hello/
     "title": "Hello world",
     "description": "Minimal plugin: one command, output through api['pft']",
     "tags": ["basic", "sync"],
-    "blacklist": [],
+    "blacklist": [""],
     "since": "0.1.0",
+    "src": ["hello.py"],
     "config": {
         "file": "hello.py",
         "cache": true,
@@ -85,6 +86,7 @@ Rules enforced by the index build:
 | `tags` | list of strings |
 | `blacklist` | optional list of glob patterns the packager skips (`__pycache__`, `*.pyc`, ...) |
 | `since` | optional, first version that provides the example |
+| `src`| source file/dir(regarding plugin.json)|
 
 ## Multi-file plugins (packages)
 

@@ -13,6 +13,9 @@
             "since": null,
             "repo": "pyre-plugin-example-panel",
             "url": "https://github.com/wertygr/pyre-plugin-example-panel/releases/latest/download/panel.zip",
+            "src": [
+                "panel"
+            ],
             "version_url": "https://github.com/wertygr/pyre-plugin-example-panel/releases/download/{tag}/panel.zip",
             "config": {
                 "file": "panel/__init__.py",
@@ -28,6 +31,9 @@
             "since": null,
             "repo": "pyre-plugin-example-ppm",
             "url": "https://github.com/wertygr/pyre-plugin-example-ppm/releases/latest/download/ppm.zip",
+            "src": [
+                "ppm"
+            ],
             "version_url": "https://github.com/wertygr/pyre-plugin-example-ppm/releases/download/{tag}/ppm.zip",
             "config": {
                 "file": "ppm/__init__.py",
@@ -43,6 +49,9 @@
             "since": null,
             "repo": "pyre-plugin-example-builder",
             "url": "https://github.com/wertygr/pyre-plugin-example-builder/releases/latest/download/builder.zip",
+            "src": [
+                "builder"
+            ],
             "version_url": "https://github.com/wertygr/pyre-plugin-example-builder/releases/download/{tag}/builder.zip",
             "config": {
                 "file": "builder/__init__.py",
