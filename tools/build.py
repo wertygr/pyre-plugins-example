@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import urllib.error
 import urllib.request
@@ -32,7 +31,6 @@ README_FILE = ROOT / "README.md"
 BEGIN = "<!-- BEGIN INDEX -->"
 END = "<!-- END INDEX -->"
 
-NAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 CONFIG_KEYS = frozenset({"file", "cache", "api", "hooks"})
 USER_AGENT = "pyre-plugins-index/1.0"
 TIMEOUT = 20.0
@@ -168,15 +166,18 @@ def validate(meta: Any, where: str) -> list[str]:
 
     errors: list[str] = []
     name = meta.get("name")
-    if not isinstance(name, str) or not NAME_RE.match(name):
+    if not isinstance(name, str):
         errors.append(
             f'{where}: "name" must be a command identifier '
-            f'(e.g. "build" or "_hello_"); the "_name_" form is the recommended style'
         )
 
     title = meta.get("title")
     if not isinstance(title, str) or not title.strip():
         errors.append(f'{where}: "title" must be a non-empty string')
+
+    src = meta.get("src")
+    if not isinstance(src, list) or any(not isinstance(o, str) for o in src):
+        errors.append(f'{where}: "src" must be a list of strings, "src" type: {type(src)}')
 
     description = meta.get("description", "")
     if not isinstance(description, str):

@@ -9,8 +9,7 @@
     "properties": {
         "name": {
             "type": "string",
-            "description": "Command name used to invoke the plugin. The \"_name_\" form is the recommended style, but any identifier is valid.",
-            "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+            "description": "Command name used to invoke the plugin.",
             "examples": ["_example_", "build"]
         },
         "blacklist": {
@@ -33,6 +32,10 @@
             "items": {"type": "string"},
             "uniqueItems": true,
             "default": []
+        },
+        "src": {
+            "type": "array",
+            "items": {"type": "string"}
         },
         "since": {
             "type": "string",
